@@ -1,0 +1,157 @@
+<html>
+
+<head>
+
+
+<title>Cidades</title>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="well well-sm">
+
+
+
+
+
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li class="active"><a th:href="@{/}">index</a></li>
+					<li class="active"><a href="/cidade.html">Cidades</a></li>
+                  
+				</ul>
+
+			</div>
+		</div>
+
+	</nav>
+	
+	
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li class="active"><h1>Bairros</h1></li>
+					
+				</ul>
+				
+			</div>
+		</div>
+
+	</nav>
+
+
+
+	<center>
+		<a href="/bairro.html">Limpar</a>
+	</center>
+	<p></p>
+
+
+	<div class="container-fluid text-center">
+		<div class="row content">
+
+			<div class="col-sm-8 text-left">
+
+				<!-- Um formulário comum que inclui tags input -->
+				<form class="form-horizontal" action="/bairro/salve" method="post">
+
+
+					<div class="form-group">
+						<input type="hidden" th:value="${b.idBairro}" name="idBairro" />
+						<div class="col-sm-3">
+							Bairro: <input type="text" th:value="${b.nomeBairro}"
+								class="form-control" placeholder="Bairro" name="nomeBairro" />
+						</div>
+
+					</div>
+					<div class="form-group">
+						Cidade: <select th:field="${b.cidade.idCidade}">
+
+
+							<option th:each="cidade : ${cidades}"
+								th:text="${cidade.nomeCidade}" th:value="${cidade.idCidade}" />
+
+						</select>
+					</div>
+
+					<button type="submit" class="btn btn-default">Enviar</button>
+
+				</form>
+
+
+				<div>
+					<table class="table table-striped">
+
+						<thead>
+
+
+							<tr>
+
+								<td><font color="blue">id</font></td>
+								<td><font color="blue">Nome Bairro</font></td>
+								<td><font color="blue">Cidade</font></td>
+
+
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr class="success" th:each="emp : ${bairros}">
+
+								<td class="success"><font color="blue"
+									th:text="${emp.idBairro}"></font></td>
+								<td class="success"><font color="blue"
+									th:text="${emp.nomeBairro}"></font></td>
+								<td class="success"><font color="blue"
+									th:text="${emp.cidade.nomeCidade}"></font></td>
+
+
+
+								<td class="success"><a
+									th:href="@{/bairro/del(idBairro=${emp.idBairro})}">Excluir</a></td>
+								<td class="success"><a
+									th:href="@{/bairro(idBairro=${emp.idBairro})}">Editar</a></td>
+
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+</body>
+
+
+</html>

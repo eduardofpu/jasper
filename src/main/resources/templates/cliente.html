@@ -1,0 +1,310 @@
+<html>
+
+<head>
+
+
+<title>Cidades</title>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+	<div class="well well-sm">
+		
+
+
+
+			<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse"
+							data-target="#myNavbar">
+							<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+
+					</div>
+					<div class="collapse navbar-collapse" id="myNavbar">
+						<ul class="nav navbar-nav">
+							<li class="active"><a th:href="@{/}">index</a></li>
+							<li class="active"><a href="/cidade.html">Cidades</a></li>
+							<li class="active"><a href="/bairro.html">Bairros</a></li>
+                            <li class="active"><h1>Clientes</h1></li>
+
+						</ul>
+
+					</div>
+				</div>
+
+			</nav>
+
+			
+
+			<div class="container-fluid text-center">
+				<div class="row content">
+
+					<div class="col-sm-8 text-left">
+
+
+						<!-- Um formulário comum que inclui tags input -->
+						<form action="/cliente/salve" method="post">
+
+							<table class="table table-striped">
+
+
+								<tr>
+									<div class="form-group">
+										<div class="col-sm-5">
+											<td><font color="blue"> <input type="hidden"
+													th:value="${cliente.idCliente}" name="idCliente" /> Nome:
+													<input type="text" class="form-control" placeholder="Nome"
+													th:value="${cliente.nomeCliente}" name="nomeCliente" />
+
+											</font></td>
+										</div>
+
+									</div>
+                                  
+									<div class="form-group">
+										<div class="col-sm-5">
+											<td><font color="blue"> Sobre Nome: <input
+													type="text" class="form-control" placeholder="Sobre Nome"
+													th:value="${cliente.sobreNome}" name="sobreNome" />
+
+											</font></td>
+										</div>
+									</div>
+                                      
+
+									<div class="form-group">
+										<div class="col-sm-5">
+											<td><font color="blue"> Telefone: <input
+													type="text" class="form-control" placeholder="Telefone"
+													th:value="${cliente.telefone}" name="telefone" />
+
+											</font></td>
+										</div>
+									</div>
+                                      </tr>
+                                      <tr>
+									<div class="form-group">
+										<div class="col-sm-5">
+											<td><font color="blue"> CPF: <input type="text"
+													class="form-control" placeholder="CPF"
+													th:value="${cliente.cpf}" name="cpf" />
+
+
+											</font></td>
+
+										</div>
+									</div>
+                                   
+									<div class="form-group">
+										<div class="col-sm-5">
+											<td><font color="blue"> RG: <input type="text"
+													class="form-control" placeholder="RG"
+													th:value="${cliente.rg}" name="rg" />
+
+											</font></td>
+
+										</div>
+									</div>
+
+                                      </tr>
+                                      <tr>
+									<td><font color="blue">Bairro:
+											<div class="form-group">
+												<select th:field="${cliente.bairro.idBairro}">
+
+
+													<option th:each="bairro : ${bairros}"
+														th:text="${bairro.nomeBairro}"
+														th:value="${bairro.idBairro}" />
+
+												</select>
+											</div>
+									</font></td>
+									
+									
+									
+									
+
+									<td><font color="blue">Cidade:
+											<div class="form-group">
+												<select th:field="${cliente.cidade.idCidade}">
+
+
+													<option th:each="cidade : ${cidades}"
+														th:text="${cidade.nomeCidade}"
+														th:value="${cidade.idCidade}" />
+
+												</select>
+											</div>
+									</font></td>
+									<td><font color="blue">Estado:
+											<div class="form-group">
+												<select th:field="${cliente.estado.idEstado}">
+
+
+													<option th:each="estado : ${estados}"
+														th:text="${estado.sigla}" th:value="${estado.idEstado}" />
+
+												</select>
+											</div>
+									</font></td>
+
+
+									<td>
+										<p></p>
+										<p></p>
+										<p></p>
+										<button type="submit" class="btn btn-default">Enviar</button>
+									</td>
+								</tr>
+
+
+
+
+
+
+							</table>
+
+
+
+							<center>
+								<a href="/cliente.html">Limpar</a>
+							</center>
+							<p></p>
+
+
+
+
+						</form>
+
+
+
+
+						<form action="/pesquisaCliente" method="post">
+
+							<center>
+
+
+								<table class="table table-striped">
+									<tr>
+
+										<p></p>
+										<p></p>
+
+										<h1>Busque um cliente</h1>
+
+
+										<div class="form-group">
+											<div class="col-sm-3">
+												<td>Nome Cliente: <input type="text"
+													class="form-control" placeholder="Nome Cliente"
+													name="nomeCliente" />
+
+												</td>
+
+											</div>
+										</div>
+
+
+										<td>
+											<p></p>
+											<p></p>
+											<p></p>
+											<p></p>
+											<p></p>
+											<p></p>
+											<button type="submit" class="btn btn-default">Pesquisar</button>
+										</td>
+
+
+									</tr>
+
+								</table>
+
+
+							</center>
+
+
+						</form>
+
+						<center>
+							<div>
+
+								<table class="table table-striped">
+
+									<thead>
+
+										<tr>
+
+											<td><font color="blue">id</font></td>
+											<td><font color="blue">Nome Cliente</font></td>
+											<td><font color="blue">Sobre Nome</font></td>
+											<td><font color="blue">Telefone</font></td>
+											<td><font color="blue">CPF</font></td>
+											<td><font color="blue">RG</font></td>
+											<td><font color="blue">Bairros</font></td>
+											<td><font color="blue">Cidade</font></td>
+											<td><font color="blue">Estado</font></td>
+
+
+										</tr>
+									</thead>
+									<tbody>
+
+										<tr class="success" th:each="emp : ${clientes}">
+
+											<td class="success"><font color="blue"
+												th:text="${emp.idCliente}"></font></td>
+											<td class="success"><font color="blue"
+												th:text="${emp.nomeCliente}"></font></td>
+											<td class="success"><font color="blue"
+												th:text="${emp.sobreNome}"></font></td>
+											<td class="success"><font color="blue"
+												th:text="${emp.telefone}"></font></td>
+											<td class="success"><font color="blue"
+												th:text="${emp.cpf}"></font></td>
+											<td class="success"><font color="blue"
+												th:text="${emp.rg}"></font></td>
+											<td class="success"><font color="blue"
+												th:text="${emp.bairro.nomeBairro}"></font></td>
+											<td class="success"><font color="blue"
+												th:text="${emp.cidade.nomeCidade}"></font></td>
+											<td class="success"><font color="blue"
+												th:text="${emp.estado.sigla}"></font></td>
+
+											<td class="success"><a
+												th:href="@{/cliente/del(idCliente=${emp.idCliente})}">Excluir</a></td>
+											<td class="success"><a
+												th:href="@{/cliente(idCliente=${emp.idCliente})}">Editar</a></td>
+
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+						</center>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+
+</html>

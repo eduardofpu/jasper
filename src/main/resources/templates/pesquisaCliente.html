@@ -1,0 +1,98 @@
+<html>
+<head>
+
+<title>Clientes</title>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+
+					<li><a href="/cliente.html">Voltar</a></li>
+
+				</ul>
+
+			</div>
+		</div>
+
+	</nav>
+	<center>
+
+		<a href="/cliente.html">Clientes</a>
+
+
+		<div>
+			<table class="table table-striped">
+
+				<thead>
+
+					<tr>
+
+						<td><font color="blue">id</font></td>
+						<td><font color="blue">Nome Cliente</font></td>
+						<td><font color="blue">Sobre Nome</font></td>
+						<td><font color="blue">Telefone</font></td>
+						<td><font color="blue">CPF</font></td>
+						<td><font color="blue">RG</font></td>
+						<td><font color="blue">Bairros</font></td>
+						<td><font color="blue">Cidade</font></td>
+						<td><font color="blue">Estado</font></td>
+						</tr>
+				</thead>
+				<tbody>
+
+					<tr class="success" th:each="emp : ${clientePesquisa}">
+
+						<td class="success"><font color="blue"
+							th:text="${emp.idCliente}"></font></td>
+						<td class="success"><font color="blue"
+							th:text="${emp.nomeCliente}"></font></td>
+						<td class="success"><font color="blue"
+							th:text="${emp.sobreNome}"></font></td>
+						<td class="success"><font color="blue"
+							th:text="${emp.telefone}"></font></td>
+						<td class="success"><font color="blue" th:text="${emp.cpf}"></font></td>
+						<td class="success"><font color="blue" th:text="${emp.rg}"></font></td>
+						<td class="success"><font color="blue"
+							th:text="${emp.bairro.nomeBairro}"></font></td>
+						<td class="success"><font color="blue"
+							th:text="${emp.cidade.nomeCidade}"></font></td>
+						<td class="success"><font color="blue"
+							th:text="${emp.estado.sigla}"></font></td>
+
+
+
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</center>
+
+
+
+</body>
+
+</html>
